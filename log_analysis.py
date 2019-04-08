@@ -34,17 +34,22 @@ q3_query = """select epd.day,
 
 class Log_Analysis:
     def db_results(self, query):
-        # Connect to database
-        db = psycopg2.connect("dbname=news")
-        c = db.cursor()
-        # executing query and getting all results
-        c.execute(query)
-        db_res = c.fetchall()
-        # closing connection
-        db.close()
-        return db_res
+        """Connect to the db, execute query, and return results"""
+        try:
+            # Connect to database
+            db = psycopg2.connect("dbname=news")
+            c = db.cursor()
+            # executing query and getting all results
+            c.execute(query)
+            db_res = c.fetchall()
+            # closing connection
+            db.close()
+            return db_res
+        except Error:
+            print ("Error when attempting to connect to db")
 
     def print_results(self, question, query, desc="views"):
+        """Print the results of question after executing query"""
         # get the resuls from the query
         results = self.db_results(query)
         # print out the question
