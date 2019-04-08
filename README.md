@@ -1,6 +1,6 @@
 # Log Analysis Project
 
-## Description
+## Project Description
 In this project, my task was to be able to answer the following three questions:
 
 1. What are the most popular three articles of all time?
@@ -17,6 +17,7 @@ This database contains three tables:
 ## Set Up
 
 1. Install the Linux-based virtual machine. This will require installing [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1)
+  - To ensure that the same working environment is used, make sure to use [this vagranfile](Vagrantfile)
   - After installing or if you simply need to bring the vm back online, use the commands `vagrant up` followed by `vagrant ssh`
 2. Download the necessary data from [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
   - Unzip the file and move the `newsdata.sql` file to the `vagrant` directory.
@@ -49,6 +50,8 @@ This database contains three tables:
   ```
 4. Use the `\q` command to quit `psql`
 5. Run the script to get the answers to the questions using `python log_analysis.py`
+
+## Description of `log_analysis.py`
 
 ## Author
 Adilene Pulgarin
