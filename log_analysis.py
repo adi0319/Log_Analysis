@@ -5,26 +5,31 @@
 import psycopg2
 
 # Requires that the view views_per_article from the README has been created
-question_1 = "What are the most popular three articles of all time? (Most popular article listed first)"
+question_1 = "What are the most popular three articles of all time? \
+(Most popular article listed first)"
 q1_query = """select * from views_per_article limit 3"""
 
 # Requires that the view views_per_article from the README has been created
-question_2 = "Who are the most popular article authors of all time? (Most popular author listed first)"
+question_2 = "Who are the most popular article authors of all time? \
+(Most popular author listed first)"
 q2_query = """select authors_articles.author, sum(vpa.views) as views
-              from views_per_article as vpa, (select authors.name as author, articles.title
-                                           from authors, articles
-                                           where authors.id = articles.author) as authors_articles
+              from views_per_article as vpa,
+              (select authors.name as author, articles.title
+               from authors, articles
+               where authors.id = articles.author) as authors_articles
               where authors_articles.title = vpa.title
               group by authors_articles.author
               order by views
               desc"""
 
-# Requires that the views errors_per_day and total_req_per_day from the README have been created
+# Requires that the views errors_per_day and total_req_per_day from
+# the README have been created
 question_3 = "On which days did more than 1% of requests lead to errors?"
-q3_query = """select epd.day, round((epd.num_errors * 100.0 / trpd.num_requests), 2) as errors
+q3_query = """select epd.day,
+              round((epd.num_errors * 100.0 / trpd.num_requests), 2) as errors
               from errors_per_day as epd, total_req_per_day as trpd
-              where epd.day = trpd.day
-              and round((epd.num_errors * 100.0 / trpd.num_requests), 2) >= 1.0"""
+              where epd.day = trpd.day and
+              round((epd.num_errors * 100.0 / trpd.num_requests), 2) >= 1.0"""
 
 
 class Log_Analysis:
