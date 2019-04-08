@@ -16,13 +16,13 @@ This database contains three tables:
 
 ## Set Up
 
-1. Install the Linux-based virtual machine. This will require installing [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1)
+1. Install the Linux-based virtual machine. This will require installing [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1).
   - After installing or if you simply need to bring the vm back online, use the commands `vagrant up` followed by `vagrant ssh`
-2. Download the necessary data from [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
+2. Download the necessary data from [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip).
   - Unzip the file and move the `newsdata.sql` file to the `vagrant` directory.
   - Go to the `vagrant` directory and load the data using the following command: `psql -d news -f newsdata.sql`
-3. Create the necessary `Views`:
-  - Required for question 1 and question 2.
+3. Create the necessary views:
+  - Required for question 1 and question 2:
   ```
   create view views_per_article as
   select a.title, count(l.id) as views
